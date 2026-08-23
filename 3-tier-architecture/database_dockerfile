@@ -1,0 +1,12 @@
+# Official PostgreSQL database image
+FROM postgres:15-alpine
+
+# Set database environment variables
+ENV POSTGRES_DB=jewelry_db
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgrespassword
+
+# Copy SQL initialization script into entrypoint directory
+COPY init.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 5432
